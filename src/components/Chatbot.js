@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ChatMessage from './ChatMessage'
 import { Input } from 'antd';
-// import { Slider } from './Slide';
+import Modal from './Modal'
 
 import { Col, Row } from 'antd';
 import { SendOutlined } from '@ant-design/icons'
@@ -43,11 +43,20 @@ export default function Chatbot() {
         }, 1);
     };
     return (
-        <div>
+        <div className='connect'>
+            <Row>
+            <Col span={6} style={{ display:'flex', alignItems:'center', justifyContent:'center'}}>
             <div className='logo-head'>
                 <img src={clogo} alt='...' width="60" />
                 <h4>Ziya</h4>
             </div>
+            </Col>
+            <Col span={18} style={{ display:'flex', alignItems:'center'}}>
+                <div>
+                <h3 className='con-text'>Connecting Talents with Opportunities</h3>
+                </div>
+            </Col>
+            </Row>
             <div className='chat-message'>
                 {
                     messages.length > 0 && messages.map((data) => <ChatMessage {...data} />)
@@ -58,6 +67,7 @@ export default function Chatbot() {
 
             <Row className='tex-bar'>
                 <Col span={12} offset={6} className='text-bar' id="copyright">
+                    <Modal />
                     {/* <div className='text-bar' id='copyright'> */}
                     <Input className='input-bar' placeholder="Hi, How can i assist you?(Write here)" value={text} onChange={(e) => setText(e.target.value)} />
                     <button className='send-btn' onClick={onSend}><SendOutlined style={{ color: 'black' }} /></button>
