@@ -20,7 +20,7 @@ export default function ChatMessage(props) {
                     <div className='message-left'>
                         <img src={Chaticon} className='message-icon' width={50} />
                         {/* <span className='message-text msg-txt-left'>{props.message}</span> */ }
-                        <div>
+                        <div className='fullcarousel'>
                         <Carousel afterChange={onChange}>
 
                             <div>

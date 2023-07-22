@@ -51,6 +51,7 @@ body{
   padding: 0.5em 1em !important;
   width: fit-content;
   order: 1;
+  margin: 100px;
   
  
 }
@@ -89,10 +90,11 @@ body{
   color: white;
   padding: 0.5em 1em !important;
   width: fit-content;
-  border-radius: 0 25px 25px 30px;
-  background-color: #444654;
-
 }
 .fullcarousel{
-  
+  background-color: #444654;
+  border-radius: 0 25px 25px 30px;
+}
+.ant-carousel .slick-dots li button{
+  margin-top: 15px;
 }
