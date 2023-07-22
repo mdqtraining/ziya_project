@@ -40,10 +40,9 @@ body{
   width: fit-content;
   font-size: 18px;
   float: right;
-  position: relative;
   margin-right: 20px;
   order: 2;
-  margin-top: 30px;
+  margin-top: 10px;
   
 }
 .msg-txt-left{
