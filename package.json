@@ -2,7 +2,7 @@
   "name": "firstproject",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://mdqtraining.github.io/ziya_noww/",
+  "homepage":"https://mdqtraining.github.io/ziyanow/",
   "dependencies": {
     "@ant-design/icons": "^5.1.4",
     "@testing-library/jest-dom": "^5.17.0",
