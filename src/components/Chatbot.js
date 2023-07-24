@@ -7,41 +7,51 @@ import { Col, Row } from 'antd';
 import { SendOutlined } from '@ant-design/icons'
 import clogo from '../images/chatlogo.png' 
 import { analyze } from './utils';
+import axios from 'axios';
 
 
 export default function Chatbot() {
-    const [messages, setMessages] = useState([
-        {
-            message: "Hi I'm Ziya, How can I assist you today? If you have any questions or need help with anything, feel free to ask your queries",
-        },
-    ]);
+    const [open, setOpen] = useState(false);
+    const [status, setStatus] = useState(false);
+    const [color, setColor] = useState(false);
+    const [messages, setMessage] = useState([]);
+
 
     const [text, setText] = useState('');
-
     const onSend = () => {
-        let list = [...messages, { message: text, user: true }];
-        if (list.length > 2) {
-            const reply = analyze(text)
-            list = [
-                ...messages,
-                { message: reply }
-            ]
-        }
-        // else {
-        //     list = [
-        //         ...list,
-        //         {
-        //             message: 'Hello!, '
-        //         },
-              
-        //     ]
-        // }
-        setMessages(list)
-        setText("")
-        setTimeout(() => {
-            document.querySelector('#copyright').scrollIntoView();
-        }, 1);
-    };
+        const sendData = new FormData();
+        sendData.append('Body', JSON.stringify(text))
+                axios({
+                    method: 'POST',
+                    url:`https://ziya.noww.in/ai/chatgpt.php?`,
+                    data: sendData,
+                })
+                    .then((res) => {
+                        if (res.data.error) {
+                            setMessage(res.data.message);
+                            setOpen(true);
+                            setStatus(false);
+                            setColor(false);
+                            console.log(res.data.response);
+                        } else {
+                            setMessage(res.data.message);
+                            setOpen(true);
+                            setStatus(true);
+                            setColor(true);
+                            console.log(res.data.response);
+                            setMessage([...messages, res.data])
+                            setText("")
+                            setTimeout(() => {
+                                document.querySelector('#copyright').scrollIntoView();
+                            }, 1);
+                        }
+                    })
+                    .catch((err) => {
+                        alert("Oops something went wrong " + err);
+                    });
+                };
+
+
     return (
         <div>
             <div className='logo-head'>
