@@ -20,7 +20,7 @@ export default function Chatbot() {
 
    
     const onSend = () => {
-        setTypedTexts((prevTypedTexts) => [...prevTypedTexts, { text }]);
+        setTypedTexts((prevTypedTexts) => [...prevTypedTexts,  {text}]);
         const sendData = new FormData();
         sendData.append('Body', JSON.stringify(text))
                 axios({
@@ -73,7 +73,8 @@ export default function Chatbot() {
                         <ChatMessage
                             key={index}
                             data={data}
-                            typedText={typedTexts[index]}
+                            typedText={typedTexts}
+                            index={index}
                         />
                     ))}
                  {/* <Slider /> */}

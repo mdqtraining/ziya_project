@@ -38,6 +38,9 @@ body{
   background-color: #6d9488;
   border-radius: 100px;
 }
+.nonmessage-text{
+  display: none;
+}
 
 .send-btn{
   padding: 4px 10px;
@@ -59,13 +62,15 @@ body{
   font-size: 18px;
   float: right;
   margin-right: 20px;
-  order: 1;
+  order: 2;
   margin-top: 15px;
 }
 
 .message-left{
-  margin-top: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   float: left;
+  order:2;
 }
 .text-bar{
   display: flex;
