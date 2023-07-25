@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ChatMessage from './ChatMessage'
-import { Input } from 'antd';
+import { Input, Spin } from 'antd';
 import Modal from './Modal'
 
 import { Col, Row } from 'antd';
@@ -11,12 +11,11 @@ import axios from 'axios';
 
 
 export default function Chatbot() {
-    const [open, setOpen] = useState(false);
-    const [status, setStatus] = useState(false);
-    const [color, setColor] = useState(false);
     const [messages, setMessage] = useState([]);
     const [text, setText] = useState('');
     const [typedTexts , setTypedTexts] = useState([]);
+    const [isloading , setIsloading] = useState(false);
+
 
    
     const onSend = () => {
@@ -31,26 +30,22 @@ export default function Chatbot() {
                     .then((res) => {
                         if (res.data.error) {
                             setMessage(res.data.message);
-                            setOpen(true);
-                            setStatus(false);
-                            setColor(false);
                         } else {
-                            setMessage(res.data.message);
-                            setOpen(true);
-                            setStatus(true);
-                            setColor(true);
+                            // setMessage(res.data.message);
+                     
                             setMessage([...messages, res.data.response]);
                             setText("")
                             setTimeout(() => {
                                 document.querySelector('#copyright').scrollIntoView();
                             }, 1);
+                            setIsloading(true);
                           }
                          })
                         .catch((err) => {
                          alert("Oops something went wrong " + err);
                         });
                 };
-
+ 
 
     return (
         <div className='connect'>
@@ -75,6 +70,7 @@ export default function Chatbot() {
                             data={data}
                             typedText={typedTexts}
                             index={index}
+                            isloading={isloading}
                         />
                     ))}
                  {/* <Slider /> */}
@@ -84,7 +80,7 @@ export default function Chatbot() {
                 <Col span={12} offset={6} className='text-bar' id="copyright">
                     <Modal />
                     {/* <div className='text-bar' id='copyright'> */}
-                    <Input className='input-bar' placeholder="Send a Message" value={text} onChange={(e) => setText(e.target.value)} />
+                    <Input className='input-bar' placeholder="Send a Message..." value={text} onChange={(e) => setText(e.target.value)} />
                     <button className='send-btn' onClick={onSend}><SendOutlined style={{ color: 'black' }} /></button>
                     {/* </div> */}
                 </Col>

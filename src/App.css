@@ -16,12 +16,12 @@ body{
 .chat-message{
   background-image: url(../public/images/Untitled.png);
   background-size: cover;
-  /* background-repeat: repeat; */
   height:67vh;
   color: white;
   padding-left: 15%;
   padding-right: 15%;
   overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-gutter: stable;
   scrollbar-color: #6d9488 #e4e4e4;
 }
@@ -50,7 +50,6 @@ body{
   border-radius: 5px;
 }
 .parrent-msg{
-  flex-direction: column;
   padding-bottom: 10px;
 }
 .message-right{
@@ -60,10 +59,9 @@ body{
   color:black;
   width: fit-content;
   font-size: 18px;
-  float: right;
-  margin-right: 20px;
-  order: 2;
   margin-top: 15px;
+ float: right;
+ 
 }
 
 .message-left{
@@ -71,6 +69,7 @@ body{
   margin-bottom: 10px;
   float: left;
   order:2;
+  
 }
 .text-bar{
   display: flex;
@@ -87,7 +86,7 @@ body{
 .input-bar{
   width:80vw;
   border: none;
-  background-color: #8b8c8e;
+  background-color: #444654;
   color: white;
   font-size: 18px;
   margin-left: 3px;
@@ -97,7 +96,7 @@ body{
   text-align: center;
 }
 .message-text{
- display: inline-block;
+
  padding-right: 20px;
 }
 .chat-message {
@@ -114,9 +113,9 @@ body{
   background-color: #444654;
   border-radius: 0 25px 25px 30px;
 }
-.ant-carousel .slick-dots li button{
+/* .ant-carousel .slick-dots li button{
   margin-top: 15px;
-}
+} */
 .blue-color{
   background-color: #6FE3BF;
   color: black;
